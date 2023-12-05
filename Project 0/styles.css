@@ -1,25 +1,23 @@
-form {
+.searchform {
     justify-content:center;
     align-items: center;
 }
 
-input[type=text] {
+.searchbox{
     margin-top: 40px;
     border-radius: 40px;
     padding:15px;
-    background-color: white;
+    background-color: #ffffff;
     background-image: url('search.svg');
-    background-position: 10px 10px;
+    background-position: 5px 5px;
     background-repeat: no-repeat;
     padding-left: 40px;
-
     outline: none;
     border-style: solid;
     border-color: #EEEEEE;
-
-
 }
-input[type=text]:hover {
+
+.searchbox:hover {
     outline: none;
     box-shadow:0 0 0.5px 0.5px;
 }
@@ -35,9 +33,12 @@ input[type=text]:hover {
     padding: 8px;
     padding-left: 15px;
     padding-right: 15px;
-
 }
 
+.buttons:hover{
+    outline: none;
+    box-shadow:0 0 0.5px 0.5px;
+}
 .logo{
     margin-top: 185px;
 }
@@ -46,11 +47,13 @@ input[type=text]:hover {
     padding: 10px;
     font-family: sans-serif;
 
-
 }
 a:link {
     text-decoration: none;
     padding: 0px 10px;
+}
 
-
+.redtext{
+    color: red;
+    font-family: sans-serif;
 }
