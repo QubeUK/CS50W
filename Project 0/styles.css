@@ -70,7 +70,8 @@ a:link {
 
 .smalllogo {
     width:90px;
-    padding: 10px 10px;
+    padding: 0px 0px;
+    margin: 10px
 }
 
 .textbox {
@@ -80,6 +81,7 @@ a:link {
     outline: none;
     border-style: solid;
     border-color: #EEEEEE;
+    width:100%;
 }
 
 .textbox:focus {
@@ -92,9 +94,8 @@ a:link {
     font-family: sans-serif;
     font-size: small;
     padding-left: 15px;
-    
-    
 }
+
 .myheader {
     font-family: sans-serif;
     font-size: medium;
@@ -102,7 +103,6 @@ a:link {
     padding-top: 30px;
     height: 30px;
     line-height: 30px;
-   
 }
 
 
@@ -110,7 +110,6 @@ a:link {
     box-sizing: border-box;
   }
   
-  /* Create three unequal columns that floats next to each other */
   .column {
     float: left;
     padding: 1px;
@@ -122,11 +121,12 @@ a:link {
   }
   
   .right {
-    width: 48%;
+    width: 53%;
   }
 
   .middle {
-    width: 40%;
+    width: 35%;
+    padding-right: 70px;
   }
   
   /* Clear floats after the columns */
