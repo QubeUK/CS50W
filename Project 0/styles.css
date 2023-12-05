@@ -78,7 +78,7 @@ a:link {
 }
 
 .text_box {
-    padding-top: 10px;
+    padding: 5px;
     margin-top: 15px;
     background-repeat: no-repeat;
     outline: none;
@@ -122,7 +122,8 @@ a:link {
 }
 
 p {
-    padding-top: 7px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
 }
 
 * {
