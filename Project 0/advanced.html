@@ -3,6 +3,7 @@
     <head>
         <title>Advanced Search</title>
         <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <div>
@@ -13,23 +14,67 @@
         </div>
         <div>
             <hr class="ruler">
+        </div>    
+        <div class="row myheader">
+            <div class="column left">
+                Find pages with...
+            </div>            
+            <div class="column middle"">
+            </div>
+            <div class="column right">
+                To do this in the search box.
+            </div>
         </div>
-        <div>
-            text here
-        </div>
-        <div>
-            <form class="gentext" action="https://www.google.com/search">
-                <div>
-                all these words <input class="textbox" type="text" name="q" size="70">
+
+        <form class="gentext" action="https://www.google.com/search">
+            <div class="row gentext">
+                <div class="column left"">
+                    <p>all these words:</p>
+                </div>            
+                <div class="column middle"">
+                    <input class="textbox" type="text" name="q" size="80">
                 </div>
-                <div>
-                this exact word or phrase<input class="textbox" type="text" name="q" size="70">
+                <div class="column right">
+                    <p>Type the important words: tri-colour rat terrier</p>
                 </div>
-                <div>
-                any of these words<input class="textbox" type="text" name="q" size="70">
+            </div>
+
+            <div class="row gentext">
+                <div class="column left"">
+                    <p>this exact word or phrase:</p>
+                </div>            
+                <div class="column middle"">
+                    <input class="textbox" type="text" name="q" size="80">
                 </div>
-                <div>
-                none of these words<input class="textbox" type="text" name="q" size="70">
-                </div> 
-        </div>
+                <div class="column right">
+                    <p>Put exact words in quotes: "rat terrier"</p>
+                </div>
+            </div>
+
+            <div class="row gentext">
+                <div class="column left"">
+                    <p>any of these words:</p>
+                </div>            
+                <div class="column middle"">
+                    <input class="textbox" type="text" name="q" size="80">
+                </div>
+                <div class="column right">
+                    <p>Type OR between all the words you want: miniature OR standard</p>
+                </div>
+            </div>
+
+            <div class="row gentext">
+                <div class="column left"">
+                    <p>none of these words</p>
+                </div>            
+                <div class="column middle"">
+                    <input class="textbox" type="text" name="q" size="80">
+                </div>
+                <div class="column right">
+                    <p>Put a minus sign just before words that you don't want: -rodent, -"Jack Russell"</p>
+                </div>
+            </div>
+        </form>
+
+
     </body>

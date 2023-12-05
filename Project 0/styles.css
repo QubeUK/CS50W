@@ -69,18 +69,14 @@ a:link {
 }
 
 .smalllogo {
-    width:70px;
+    width:90px;
     padding: 10px 10px;
 }
 
 .textbox {
-    padding: 5px;
-    margin: 2px;
-    background-color: #ffffff;
-    background-image: url('search.svg');
-    background-position: 5px 5px;
+    padding-top: 10px;
+    margin-top: 15px;
     background-repeat: no-repeat;
-    padding-left: 40px;
     outline: none;
     border-style: solid;
     border-color: #EEEEEE;
@@ -95,4 +91,47 @@ a:link {
 .gentext {
     font-family: sans-serif;
     font-size: small;
+    padding-left: 15px;
+    
+    
 }
+.myheader {
+    font-family: sans-serif;
+    font-size: medium;
+    padding-left: 30px;
+    padding-top: 30px;
+    height: 30px;
+    line-height: 30px;
+   
+}
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Create three unequal columns that floats next to each other */
+  .column {
+    float: left;
+    padding: 1px;
+  
+  }
+  
+  .left{
+    width: 12%;
+  }
+  
+  .right {
+    width: 48%;
+  }
+
+  .middle {
+    width: 40%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
