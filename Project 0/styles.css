@@ -22,7 +22,6 @@ input[type=text] {
 input[type=text]:hover {
     outline: none;
     box-shadow:0 0 0.5px 0.5px;
-
 }
 
 .buttons{
