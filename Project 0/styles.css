@@ -8,9 +8,10 @@
     border-radius: 40px;
     padding:15px;
     background-color: #ffffff;
-    background-image: url('search.svg');
-    background-position: 5px 5px;
+    background-image: url("search.png");
+    background-position: 7px 12px;
     background-repeat: no-repeat;
+    background-size: 22px;
     padding-left: 40px;
     outline: none;
     border-style: solid;
@@ -42,6 +43,7 @@
 
 .logo {
     margin-top: 185px;
+
 }
 
 .links {
@@ -72,6 +74,7 @@ a:link {
     width:90px;
     padding: 0px 0px;
     margin: 10px
+
 }
 
 .textbox {
