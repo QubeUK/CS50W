@@ -11,4 +11,4 @@ CS50 Web Development
 | Final     |             |
 
 ### 🌱 Languages & Tools Used For This Course
-![Learning](https://skillicons.dev/icons?i=css,html,js,django,mongodb,&perline=10)
+![Learning](https://skillicons.dev/icons?i=css,html,js,django,mongodb,python,&perline=10)
