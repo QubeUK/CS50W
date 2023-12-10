@@ -8,3 +8,7 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def new_page(request):
+    return render(request,"encyclopedia/new_page.html", {
+        "entries":util.save_entry()
+    })
