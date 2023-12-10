@@ -9,6 +9,11 @@ def index(request):
     })
 
 def new_page(request):
-    return render(request,"encyclopedia/new_page.html", {
-        "entries":util.save_entry()
+    return render(request, "encyclopedia/new_page.html", {
+        #"title, contents":util.save_entry()
+    })
+
+def random(request):
+    return render(request, "encyclopedia/random.html", {
+        #"title, contents":util.get_entry()
     })
