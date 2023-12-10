@@ -14,7 +14,18 @@ h1 {
 
 textarea {
     height: 90vh;
-    width: 80%;
+    width: 80%;    
+    height:600px; 
+    border-radius:5px;
+    padding:15px;
+    outline: none;
+    border-style: solid;
+    border-color: #EEEEEE;
+}
+
+textarea:hover {
+    outline: none;
+    box-shadow:0 0 0.5px 0.5px;
 }
 
 .main {
@@ -25,6 +36,10 @@ textarea {
     width: 100%;
     font-size: 15px;
     line-height: 15px;
+    border-radius: 5px;
+    outline: none;
+    border-style: solid;
+    border-color: #EEEEEE;
 }
 
 .sidebar {
@@ -36,4 +51,39 @@ textarea {
 
 .sidebar h2 {
     margin-top: 5px;
+}
+
+
+.search:hover {
+    outline: none;
+    box-shadow:0 0 0.5px 0.5px;
+}
+
+.title_bar{
+margin-bottom:10px; 
+border-radius:5px; 
+width:80%; 
+padding:5px; 
+padding-left:10px;
+outline: none;
+border-style: solid;
+border-color: #EEEEEE;
+}
+
+.title_bar:hover {
+    outline: none;
+    box-shadow:0 0 0.5px 0.5px;
+}
+
+.buttons{
+    justify-content:center;
+    align-items: center;
+    border-radius: 5px;
+    outline: none;
+    border-color: #EEEEEE;    
+}
+
+.buttons:hover {
+    outline: none;
+    box-shadow:0 0 0.5px 0.5px;
 }

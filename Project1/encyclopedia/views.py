@@ -13,12 +13,13 @@ def new_page(request):
         # "title, contents":util.save_entry()
     })
 
-def random(request, title):
-    return render(request, "encyclopedia/random.html", {
-        "title":util.get_entry()
+def rand(request):
+    
+    return render(request, "encyclopedia/rand.html", {
+        # "title":util.get_entry(entry)
     })
 
 def display(request, title):
-    return render(request, "encyclopedia/random.html", {
-        "title":util.get_entry(title)
+    return render(request, "encyclopedia/rand.html", {
+        #"title":util.get_entry()
     })

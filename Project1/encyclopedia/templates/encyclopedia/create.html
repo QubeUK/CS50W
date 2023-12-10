@@ -4,8 +4,15 @@
 {% endblock %}
 {% block body %}
     <h1>Create New Page</h1>
-    <form action="">
-        <input type="text" name="article">
-        <input type="submit">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input class="title_bar" type="text" placeholder="Title of Document">
+        <div>
+            
+            <textarea name="article"></textarea>
+        </div>
+        <div>
+            <input class="buttons" type="submit" style="border-radius:5px;">
+        </div>
     </form>
 {% endblock %}
