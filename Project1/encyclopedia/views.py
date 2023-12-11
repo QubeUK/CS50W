@@ -19,7 +19,7 @@ def rand(request):
         # "title":util.get_entry(entry)
     })
 
-def display(request, title):
+def display(request):
     return render(request, "encyclopedia/rand.html", {
         #"title":util.get_entry()
     })
