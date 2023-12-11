@@ -8,6 +8,5 @@ urlpatterns = [
     path("wiki/rand/", views.rand, name="rand"),
     path("display/", views.rand, name="display"),
     #path("<str:entry>", views.rand, name="entry")
-   
-    
+
 ]
