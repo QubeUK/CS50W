@@ -4,15 +4,10 @@
 {% endblock %}
 {% block body %}
     <h1>Create New Page</h1>
-    <form action="" method="post">
+    <form action="{% url 'wiki:create' %}" method="post">
         {% csrf_token %}
-        <input class="title_bar" type="text" placeholder="Title of Document">
-        <div>
-            
-            <textarea name="article"></textarea>
-        </div>
-        <div>
-            <input class="buttons" type="submit" style="border-radius:5px;">
-        </div>
+        {{ form }}
+        <input class="buttons" type="submit" style="border-radius:5px;">
+        
     </form>
 {% endblock %}
