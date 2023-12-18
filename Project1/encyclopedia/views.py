@@ -1,3 +1,4 @@
+import markdown
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from django import forms
 
@@ -32,6 +33,9 @@ def new_page(request):
 
 def rand(request):
     
+    with open("Git.md", "r") as file:
+        text = file.read()
+        html = markdown.markdown(text)
     return render(request, "encyclopedia/rand.html", {
         
     })
