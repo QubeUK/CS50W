@@ -1,5 +1,5 @@
 import markdown
-import random
+from random import choice
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from django import forms
 
@@ -26,7 +26,7 @@ def new_page(request):
     return render(request, "encyclopedia/create.html", {"form": NewWikiForm()})
 
 def rand(request):    
-    article = random.choice(util.list_entries())    
+    article = choice(util.list_entries())    
     html = markdown.markdown(util.get_entry(article))
     title = html.split()[0].replace("<h1>","").replace("</h1>","")        
     return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
