@@ -11,11 +11,8 @@ class NewWikiForm(forms.Form):
 
 def index(request):
     if "articles" not in request.session:
-        request.session["articles"] = []
-    
-    return render(request, "encyclopedia/index.html", {
-        "entries": util.list_entries()
-    })
+        request.session["articles"] = []    
+    return render(request, "encyclopedia/index.html", {"entries": util.list_entries()})
 
 def new_page(request):
     if request.method == "POST":
@@ -24,39 +21,28 @@ def new_page(request):
             article = form.cleaned_data["article"]            
             return HttpResponseRedirect(reverse("wiki:index"))
         else:
-            return render(request, "wiki/create.html", {
-                "form": form
-            })
+            return render(request, "wiki/create.html", {"form": form})
 
-    return render(request, "encyclopedia/create.html", {
-        "form": NewWikiForm()
-    })
+    return render(request, "encyclopedia/create.html", {"form": NewWikiForm()})
 
 def rand(request):    
     article = random.choice(util.list_entries())    
-    with open(f"./entries/{article}.md", "r") as file:
-        text = file.read()
-        html = markdown.markdown(text)
-        title = html.split()[0].replace("<h1>","").replace("</h1>","")        
+    html = markdown.markdown(util.get_entry(article))
+    title = html.split()[0].replace("<h1>","").replace("</h1>","")        
     return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
 
 
 def display(request, article):             
-    if article in util.list_entries():
-        with open(f"./entries/{article}.md", "r") as file:
-            text = file.read()
-            html = markdown.markdown(text)
-            title = html.split()[0].replace("<h1>","").replace("</h1>","")        
-        return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
+    html = markdown.markdown(util.get_entry(article))
+    title = html.split()[0].replace("<h1>","").replace("</h1>","")        
+    return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
     
     
 def search(request):
     query = request.GET["query"]
     if query in util.list_entries():
-        with open(f"./entries/{query}.md", "r") as file:
-            text = file.read()
-            html = markdown.markdown(text)
-            title = html.split()[0].replace("<h1>","").replace("</h1>","")        
+        html = markdown.markdown(util.get_entry(query))
+        title = html.split()[0].replace("<h1>","").replace("</h1>","")       
         return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
                 
     return render(request, "encyclopedia/search.html", {"title":"Search Results"})
