@@ -1,5 +1,5 @@
-import markdown
 from random import choice
+import markdown
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from django import forms
 
@@ -11,7 +11,7 @@ class NewWikiForm(forms.Form):
 
 def index(request):
     if "articles" not in request.session:
-        request.session["articles"] = []    
+        request.session["articles"] = []
     return render(request, "encyclopedia/index.html", {"entries": util.list_entries()})
 
 def new_page(request):
@@ -25,25 +25,23 @@ def new_page(request):
 
     return render(request, "encyclopedia/create.html", {"form": NewWikiForm()})
 
-def rand(request):    
-    article = choice(util.list_entries())    
+def rand(request):
+    article = choice(util.list_entries())
     html = markdown.markdown(util.get_entry(article))
-    title = html.split()[0].replace("<h1>","").replace("</h1>","")        
+    title = html.split()[0].replace("<h1>","").replace("</h1>","")
     return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
 
 
-def display(request, article):             
+def display(request, article):
     html = markdown.markdown(util.get_entry(article))
-    title = html.split()[0].replace("<h1>","").replace("</h1>","")        
+    title = html.split()[0].replace("<h1>","").replace("</h1>","")
     return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
-    
-    
+
+
 def search(request):
     query = request.GET["query"]
     if query in util.list_entries():
         html = markdown.markdown(util.get_entry(query))
         title = html.split()[0].replace("<h1>","").replace("</h1>","")       
         return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
-                
     return render(request, "encyclopedia/search.html", {"title":"Search Results"})
-    
