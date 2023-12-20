@@ -1,4 +1,5 @@
 import markdown
+import random
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from django import forms
 
@@ -32,14 +33,18 @@ def new_page(request):
     })
 
 def rand(request):    
-    
-    with open("./entries/Git.md", "r") as file:
+    article = random.choice(util.list_entries())    
+    with open(f"./entries/{article}.md", "r") as file:
         text = file.read()
-        html = markdown.markdown(text)        
-    return render(request, "encyclopedia/rand.html", {"html":html})
+        html = markdown.markdown(text)
+        title = html.split()[0].replace("<h1>","").replace("</h1>","")        
+    return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
 
-#def display(request, entry):
-#    return HttpResponse("You're looking at page %s." % entry)
 
-def display(request, question_id):
-    return HttpResponse("You're looking at question %s." % question_id)
+def display(request, article):             
+    with open(f"./entries/{article}.md", "r") as file:
+        text = file.read()
+        html = markdown.markdown(text)
+        title = html.split()[0].replace("<h1>","").replace("</h1>","")        
+    return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
+    

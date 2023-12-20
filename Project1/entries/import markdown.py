@@ -4,4 +4,6 @@ with open("Git.md", "r") as file:
     text = file.read()
     html = markdown.markdown(text)
     
-print(html)
+    title = html.split()[0].replace("<h1>","").replace("</h1>","")
+    
+print(title)

@@ -1,15 +1,12 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    random page name - prob a var
+    {{ title }}
 {% endblock %}
 
-{% block body %}
-    <h1>Random Page</h1>
+{% block body %}    
     {% autoescape off %}
     {{ html }}
     {% endautoescape %}
     
-    
-
 {% endblock %}
