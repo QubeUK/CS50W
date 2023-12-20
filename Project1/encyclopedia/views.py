@@ -42,16 +42,22 @@ def rand(request):
 
 
 def display(request, article):             
-    with open(f"./entries/{article}.md", "r") as file:
-        text = file.read()
-        html = markdown.markdown(text)
-        title = html.split()[0].replace("<h1>","").replace("</h1>","")        
-    return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
+    if article in util.list_entries():
+        with open(f"./entries/{article}.md", "r") as file:
+            text = file.read()
+            html = markdown.markdown(text)
+            title = html.split()[0].replace("<h1>","").replace("</h1>","")        
+        return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
     
     
 def search(request):
     query = request.GET["query"]
-    print(f"Got this ->{query}")
-        
+    if query in util.list_entries():
+        with open(f"./entries/{query}.md", "r") as file:
+            text = file.read()
+            html = markdown.markdown(text)
+            title = html.split()[0].replace("<h1>","").replace("</h1>","")        
+        return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
+                
     return render(request, "encyclopedia/search.html", {"title":"Search Results"})
     

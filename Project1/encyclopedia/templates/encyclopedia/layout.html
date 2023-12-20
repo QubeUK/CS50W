@@ -12,8 +12,7 @@
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
                 <h2>Wiki</h2>
-                <form action="{% url 'wiki:search' %}">
-                    {% csrf_token %}
+                <form action="{% url 'wiki:search' %}">                   
                     <input class="search" type="text" name="query" placeholder="Search Encyclopedia">
                 </form>
                 <div>
