@@ -31,14 +31,12 @@ def new_page(request):
         "form": NewWikiForm()
     })
 
-def rand(request):
+def rand(request):    
     
-    with open("Git.md", "r") as file:
+    with open("./entries/Git.md", "r") as file:
         text = file.read()
-        html = markdown.markdown(text)
-    return render(request, "encyclopedia/rand.html", {
-        
-    })
+        html = markdown.markdown(text)        
+    return render(request, "encyclopedia/rand.html", {"html":html})
 
 #def display(request, entry):
 #    return HttpResponse("You're looking at page %s." % entry)

@@ -6,7 +6,10 @@
 
 {% block body %}
     <h1>Random Page</h1>
-
+    {% autoescape off %}
+    {{ html }}
+    {% endautoescape %}
+    
     
 
 {% endblock %}
