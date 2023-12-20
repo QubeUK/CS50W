@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: white;
+    overflow: hidden;
 }
 
 code {
@@ -22,8 +23,7 @@ textarea {
     border-color: #EEEEEE;
     resize: none; 
     margin-top: 10px;
-    padding: 15px;
-
+    padding: 10px;
 }
 
 textarea:hover {
@@ -53,25 +53,20 @@ textarea:hover {
     border-top-right-radius: 40px;
 }
 
-.sidebar h2 {
-    margin-top: 5px;
-}
-
-
 .search:hover {
     outline: none;
     box-shadow:0 0 0.5px 0.5px;
 }
 
 .title_bar{
-margin-bottom:10px; 
-border-radius:5px; 
-width:80%; 
-padding:5px; 
-padding-left:10px;
-outline: none;
-border-style: solid;
-border-color: #EEEEEE;
+    margin-bottom:10px; 
+    border-radius:5px; 
+    width:80%; 
+    padding:5px; 
+    padding-left:10px;
+    outline: none;
+    border-style: solid;
+    border-color: #EEEEEE;
 }
 
 .title_bar:hover {
@@ -103,11 +98,19 @@ border-color: #EEEEEE;
     outline: none;
     border-style: solid;
     border-color: #EEEEEE;
-    padding-left: 10px;
+    padding-left: 15px;
     padding:5px;
 }
 
 #id_title:hover {
     outline: none;
     box-shadow:0 0 0.5px 0.5px;
+}
+
+#id_ul {        
+    list-style-image: url("article.png");    
+    }
+
+ul{
+    list-style-type: square;    
 }
