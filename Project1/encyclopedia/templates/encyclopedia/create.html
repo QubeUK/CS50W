@@ -3,11 +3,12 @@
     Create New Page
 {% endblock %}
 {% block body %}
-    <h1>Create New Page</h1>
+    <h1>Create New Article</h1>
+    <hr>
     <form action="{% url 'wiki:create' %}" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input class="buttons" type="submit" style="border-radius:5px;">
+        {{ form }}        
+        <input class="buttons" type="submit" value="Save" style="border-radius:5px;">
         
     </form>
 {% endblock %}

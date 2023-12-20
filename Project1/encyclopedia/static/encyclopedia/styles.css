@@ -14,13 +14,16 @@ h1 {
 
 textarea {
     height: 90vh;
-    width: 80%;    
+    width: 50%;    
     height:600px; 
-    border-radius:5px;
-    padding:15px;
+    border-radius:5px;    
     outline: none;
     border-style: solid;
     border-color: #EEEEEE;
+    resize: none; 
+    margin-top: 10px;
+    padding: 15px;
+
 }
 
 textarea:hover {
@@ -40,6 +43,7 @@ textarea:hover {
     outline: none;
     border-style: solid;
     border-color: #EEEEEE;
+    padding:5px;
 }
 
 .sidebar {
@@ -80,10 +84,30 @@ border-color: #EEEEEE;
     align-items: center;
     border-radius: 5px;
     outline: none;
-    border-color: #EEEEEE;    
+    border-color: #EEEEEE;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .buttons:hover {
+    outline: none;
+    box-shadow:0 0 0.5px 0.5px;
+}
+
+#id_title {
+    width: 25%;
+    font-size: 15px;
+    line-height: 15px;
+    border-radius: 5px;
+    outline: none;
+    border-style: solid;
+    border-color: #EEEEEE;
+    padding-left: 10px;
+    padding:5px;
+}
+
+#id_title:hover {
     outline: none;
     box-shadow:0 0 0.5px 0.5px;
 }

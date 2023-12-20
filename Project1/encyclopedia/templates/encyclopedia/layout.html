@@ -11,20 +11,23 @@
     <body>
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
-                <h2>Wiki</h2>
+                <h1>Wiki</h1>
+                <hr>
                 <form action="{% url 'wiki:search' %}">                   
                     <input class="search" type="text" name="query" placeholder="Search Encyclopedia">
                 </form>
+                <hr>
                 <div>
                     <a href="{% url 'wiki:index' %}">Home</a>
                 </div>
                 <div>
-                    <a href="{% url 'wiki:create' %}">Create New Page</a>
+                    <a href="{% url 'wiki:create' %}">Create New Entry</a>
                 </div>
                 <div>
-                    <a href="{% url 'wiki:rand' %}">Random Page</a>
+                    <a href="{% url 'wiki:rand' %}">Random Article</a>
                 </div>
                 {% block nav %}
+                <hr>
                 {% endblock %}
             </div>
             <div class="main col-lg-10 col-md-9">
