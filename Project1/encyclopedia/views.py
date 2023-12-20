@@ -48,3 +48,10 @@ def display(request, article):
         title = html.split()[0].replace("<h1>","").replace("</h1>","")        
     return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
     
+    
+def search(request):
+    query = request.GET["query"]
+    print(f"Got this ->{query}")
+        
+    return render(request, "encyclopedia/search.html", {"title":"Search Results"})
+    
