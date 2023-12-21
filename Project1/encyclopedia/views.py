@@ -8,7 +8,7 @@ from . import util
 class NewWikiForm(forms.Form):
     """Django form class"""
     title = forms.CharField(label="",widget=forms.TextInput(attrs={'placeholder':'Enter Title'}))
-    content = forms.CharField(label="",widget=forms.Textarea(attrs={'placeholder':'Use Markdown Here'}))
+    content = forms.CharField(label="",widget=forms.Textarea(attrs={'placeholder':'Enter Markdown Here'}))
 
 
 def index(request):
@@ -46,8 +46,8 @@ def display(request, article):
 
 def search(request):
     """Displays a searched for article"""
-    query = request.GET["query"]
-    if query in util.list_entries():
+    query = request.GET["query"]    
+    if query.casefold() in map(str.casefold, util.list_entries()):
         html = markdown.markdown(util.get_entry(query))
         title = html.split()[0].replace("<h1>","").replace("</h1>","")
         return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
