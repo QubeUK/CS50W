@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block body %}    
-     <h1>Search Results</h1>
-     <hr>
-    
+    <h1>Search Results</h1>
+    <hr>
+    <ul id="id_ul">
+        {% for entry in result %}            
+            <li><a href="/wiki/{{ entry }}"> {{ entry }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}

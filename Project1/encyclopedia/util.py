@@ -41,6 +41,7 @@ def get_entry(title):
 def page_info(article):
     """
     Creates Title and HTML body from markdown document
+    Added by QubeUK, not supplied as part of util.py
     """
     html = markdown.markdown(get_entry(article))
     title = html.split()[0].replace("<h1>","").replace("</h1>","")

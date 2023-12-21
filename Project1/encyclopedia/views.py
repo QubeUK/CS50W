@@ -43,8 +43,13 @@ def display(request, article):
 
 def search(request):
     """Displays a searched for article"""
+    result = []
     query = request.GET["query"]    
     if query.casefold() in map(str.casefold, util.list_entries()):
         html, title = util.page_info(query)
         return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
-    return render(request, "encyclopedia/search.html", {"title":"Search Results"})
+
+    for entry in util.list_entries():
+        if query.casefold() in entry.casefold():
+            result.append(entry)
+    return render(request, "encyclopedia/search.html", {"title":"Search Results", "result":result})
