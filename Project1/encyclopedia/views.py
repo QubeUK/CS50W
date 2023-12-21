@@ -21,7 +21,7 @@ def new_page(request):
     if request.method == "POST":
         form = NewWikiForm(request.POST)
         if form.is_valid():
-            article = form.cleaned_data["article"]         
+            article = form.cleaned_data["article"]
             return HttpResponseRedirect(reverse("wiki:index"))
 
         return render(request, "wiki/create.html", {"form": form})
