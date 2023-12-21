@@ -1,5 +1,4 @@
 from random import choice
-import markdown
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from django import forms
 
@@ -22,25 +21,23 @@ def new_page(request):
     if request.method == "POST":
         form = NewWikiForm(request.POST)
         if form.is_valid():
-            #article = form.cleaned_data["article"]         
+            article = form.cleaned_data["article"]         
             return HttpResponseRedirect(reverse("wiki:index"))
-        else:
-            return render(request, "wiki/create.html", {"form": form})
+
+        return render(request, "wiki/create.html", {"form": form})
 
     return render(request, "encyclopedia/create.html", {"form": NewWikiForm()})
 
 def rand(request):
     """Displays a random article"""
     article = choice(util.list_entries())
-    html = markdown.markdown(util.get_entry(article))
-    title = html.split()[0].replace("<h1>","").replace("</h1>","")
+    html, title = util.page_info(article)
     return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
 
 
 def display(request, article):
     """Displays a requested article"""
-    html = markdown.markdown(util.get_entry(article))
-    title = html.split()[0].replace("<h1>","").replace("</h1>","")
+    html, title = util.page_info(article)
     return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
 
 
@@ -48,7 +45,6 @@ def search(request):
     """Displays a searched for article"""
     query = request.GET["query"]    
     if query.casefold() in map(str.casefold, util.list_entries()):
-        html = markdown.markdown(util.get_entry(query))
-        title = html.split()[0].replace("<h1>","").replace("</h1>","")
+        html, title = util.page_info(query)
         return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
     return render(request, "encyclopedia/search.html", {"title":"Search Results"})

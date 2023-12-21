@@ -1,4 +1,5 @@
 import re
+import markdown
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
@@ -35,3 +36,12 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+
+def page_info(article):
+    """
+    Creates Title and HTML body from markdown document
+    """
+    html = markdown.markdown(get_entry(article))
+    title = html.split()[0].replace("<h1>","").replace("</h1>","")
+    return html, title
