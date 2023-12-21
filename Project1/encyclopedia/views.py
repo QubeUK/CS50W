@@ -53,3 +53,10 @@ def search(request):
         if query.casefold() in entry.casefold():
             result.append(entry)
     return render(request, "encyclopedia/search.html", {"title":"Search Results", "result":result})
+
+
+def edit(request):
+    """
+    Edit an article
+    """
+    return render(request, "encyclopedia/edit.html", {"title":"Page Editor"})
