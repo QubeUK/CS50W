@@ -37,6 +37,12 @@ def new_page(request):
 
 def edit(request):
     """Edit an article"""
+    if request.method == "POST":
+        form = EditWikiForm(request.POST)
+        if form.is_valid():
+            article = form.cleaned_data
+            util.save_entry(article["title"], article["content"])
+            return HttpResponseRedirect(reverse("wiki:index"))
     form = EditWikiForm()
     form["title"].initial = (request.META['HTTP_REFERER']).rsplit('/')[-2]
     form["content"].initial = util.get_entry(form["title"].initial)    
