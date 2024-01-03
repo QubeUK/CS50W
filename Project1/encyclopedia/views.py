@@ -7,13 +7,13 @@ from . import util
 
 class NewWikiForm(forms.Form):
     """Django form class"""
-    title = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Enter Title'}),max_length=30)
+    title = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Enter Title'}), max_length=30)
     content = forms.CharField(label="", widget=forms.Textarea(attrs={'placeholder':'Enter Markdown Here'}))
 
 class EditWikiForm(forms.Form):
     """Django form class"""
-    title = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Enter Title'}),max_length=30)
-    content = forms.CharField(label="", widget=forms.Textarea(attrs={'value':'contents of file'}))
+    title = forms.CharField(label="", widget=forms.TextInput(attrs={'value': "file Title here"}), max_length=30)
+    content = forms.CharField(label="", widget=forms.Textarea(), initial="file stuff")
 
 
 def index(request):
@@ -38,14 +38,17 @@ def new_page(request):
 def edit(request):
     """Edit an article"""
     form = EditWikiForm()
-    # if form.is_valid():
-    #     article = form.cleaned_data
-    #     article["title"] = "hmm"
-    #     article["content"] = "hmm 2"
-    # content = util.get_entry(article["title"])
-    title = (request.META['HTTP_REFERER']).rsplit('/')[-2]
-    form.title = title
+    #print(form["title"])
+    form["title"].initial = (request.META['HTTP_REFERER']).rsplit('/')[-2]
+    form["content"].initial = "File here"
     
+    print(form["title"].initial)
+    
+ 
+    # content = util.get_entry(article["title"])
+    #title = (request.META['HTTP_REFERER']).rsplit('/')[-2]
+    #form["title"] #not sure if does antyhing
+    #print(form["title"])
     return render(request, "encyclopedia/edit.html", {"title":"Page Editor", "form":EditWikiForm()})
 
 
