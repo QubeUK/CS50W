@@ -12,8 +12,8 @@ class NewWikiForm(forms.Form):
 
 class EditWikiForm(forms.Form):
     """Django form class"""
-    title = forms.CharField(label="", widget=forms.TextInput(attrs={'value': "file Title here"}), max_length=30)
-    content = forms.CharField(label="", widget=forms.Textarea(), initial="file stuff")
+    title = forms.CharField(label="", widget=forms.TextInput(), max_length=30)
+    content = forms.CharField(label="", widget=forms.Textarea())
 
 
 def index(request):
@@ -38,18 +38,9 @@ def new_page(request):
 def edit(request):
     """Edit an article"""
     form = EditWikiForm()
-    #print(form["title"])
     form["title"].initial = (request.META['HTTP_REFERER']).rsplit('/')[-2]
-    form["content"].initial = "File here"
-    
-    print(form["title"].initial)
-    
- 
-    # content = util.get_entry(article["title"])
-    #title = (request.META['HTTP_REFERER']).rsplit('/')[-2]
-    #form["title"] #not sure if does antyhing
-    #print(form["title"])
-    return render(request, "encyclopedia/edit.html", {"title":"Page Editor", "form":EditWikiForm()})
+    form["content"].initial = util.get_entry(form["title"].initial)    
+    return render(request, "encyclopedia/edit.html", {"title":"Page Editor", "form":form})
 
 
 def rand(request):
@@ -76,6 +67,3 @@ def search(request):
         if query.casefold() in entry.casefold():
             result.append(entry)
     return render(request, "encyclopedia/search.html", {"title":"Search Results", "result":result})
-
-
-
