@@ -6,8 +6,8 @@ from . import util
 
 class NewWikiForm(forms.Form):
     """Django form class"""
-    title = forms.CharField(label="",widget=forms.TextInput(attrs={'placeholder':'Enter Title'}))
-    content = forms.CharField(label="",widget=forms.Textarea(attrs={'placeholder':'Enter Markdown Here'}))
+    title = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Enter Title'}),max_length=30)
+    content = forms.CharField(label="", widget=forms.Textarea(attrs={'placeholder':'Enter Markdown Here'}))
 
 
 def index(request):
@@ -21,7 +21,8 @@ def new_page(request):
     if request.method == "POST":
         form = NewWikiForm(request.POST)
         if form.is_valid():
-            article = form.cleaned_data["article"]
+            article = form.cleaned_data            
+            util.save_entry(article["title"], article["content"])            
             return HttpResponseRedirect(reverse("wiki:index"))
 
         return render(request, "wiki/create.html", {"form": form})
@@ -56,7 +57,5 @@ def search(request):
 
 
 def edit(request):
-    """
-    Edit an article
-    """
+    """Edit an article"""
     return render(request, "encyclopedia/edit.html", {"title":"Page Editor"})
