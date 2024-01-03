@@ -35,7 +35,7 @@ def new_page(request):
     return render(request, "encyclopedia/create.html", {"form": NewWikiForm()})
 
 
-def edit(request):
+def edit(request): # Need to fix edit from random page
     """Edit an article"""
     if request.method == "POST":
         form = EditWikiForm(request.POST)
