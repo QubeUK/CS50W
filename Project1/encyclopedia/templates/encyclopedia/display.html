@@ -8,6 +8,7 @@
     {% autoescape off %}
     {{ html }}
     {% endautoescape %}
-    
-    <a href="{% url 'wiki:edit' %}">Edit</a>
+    <form action="{% url 'wiki:edit' %}" method="post">
+        <a href="{% url 'wiki:edit' %}">Edit</a>
+        <input type="hidden" autocomplete="off" name='hiddenfield' value="{{ title }}" id="hiddenfieldId"/>
 {% endblock %}

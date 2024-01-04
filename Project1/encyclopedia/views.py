@@ -1,14 +1,20 @@
 from random import choice
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from django import forms
-
 from . import util
 
 
 class NewWikiForm(forms.Form):
     """Django form class"""
-    title = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Enter Title'}), max_length=30)
-    content = forms.CharField(label="", widget=forms.Textarea(attrs={'placeholder':'Enter Markdown Here'}))
+    title = forms.CharField(
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Enter Title"}),
+        max_length=30,
+    )
+    content = forms.CharField(
+        label="", widget=forms.Textarea(attrs={"placeholder": "Enter Markdown Here"})
+    )
+
 
 class EditWikiForm(forms.Form):
     """Django form class"""
@@ -35,26 +41,26 @@ def new_page(request):
     return render(request, "encyclopedia/create.html", {"form": NewWikiForm()})
 
 
-def edit(request): # Need to fix edit from random page
+def edit(request):  # Need to fix edit from random page
     """Edit an article"""
     if request.method == "POST":
-        form = EditWikiForm(request.POST)
+        form = EditWikiForm(request.POST)        
         if form.is_valid():
-            article = form.cleaned_data
+            article = form.cleaned_data            
             util.save_entry(article["title"], article["content"])
             return HttpResponseRedirect(reverse("wiki:index"))
     form = EditWikiForm()
-    form["title"].initial = (request.META['HTTP_REFERER']).rsplit('/')[-2]
-    form["content"].initial = util.get_entry(form["title"].initial)    
-    return render(request, "encyclopedia/edit.html", {"title":"Page Editor", "form":form})
+    form["title"].initial = (request.META["HTTP_REFERER"]).rsplit("/")[-2]
+    form["content"].initial = util.get_entry(form["title"].initial)
+    return render(request, "encyclopedia/edit.html", {"title": "Page Editor", "form": form})
 
 
 def display(request, article=None):
     """Displays a requested article"""
     if article is None:
-        article = choice(util.list_entries())        
+        article = choice(util.list_entries())
     html, title = util.page_info(article)
-    return render(request, "encyclopedia/display.html", {"html":html, "title":title})
+    return render(request, "encyclopedia/display.html", {"html": html, "title": title})
 
 
 def search(request):
@@ -63,8 +69,8 @@ def search(request):
     query = request.GET["query"]
     if query.casefold() in map(str.casefold, util.list_entries()):
         html, title = util.page_info(query)
-        return render(request, "encyclopedia/display.html", {"html":html, "title":title})
+        return render(request, "encyclopedia/display.html", {"html": html, "title": title})
     for entry in util.list_entries():
         if query.casefold() in entry.casefold():
             result.append(entry)
-    return render(request, "encyclopedia/search.html", {"title":"Search Results", "result":result})
+    return render(request, "encyclopedia/search.html",{"title": "Search Results", "result": result},)
