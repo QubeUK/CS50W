@@ -49,17 +49,12 @@ def edit(request): # Need to fix edit from random page
     return render(request, "encyclopedia/edit.html", {"title":"Page Editor", "form":form})
 
 
-def rand(request):
-    """Displays a random article"""
-    article = choice(util.list_entries())
-    html, title = util.page_info(article)
-    return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
-
-
-def display(request, article):
+def display(request, article=None):
     """Displays a requested article"""
+    if article is None:
+        article = choice(util.list_entries())
     html, title = util.page_info(article)
-    return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
+    return render(request, "encyclopedia/display.html", {"html":html, "title":title})
 
 
 def search(request):
@@ -68,7 +63,7 @@ def search(request):
     query = request.GET["query"]
     if query.casefold() in map(str.casefold, util.list_entries()):
         html, title = util.page_info(query)
-        return render(request, "encyclopedia/rand.html", {"html":html, "title":title})
+        return render(request, "encyclopedia/display.html", {"html":html, "title":title})
     for entry in util.list_entries():
         if query.casefold() in entry.casefold():
             result.append(entry)
