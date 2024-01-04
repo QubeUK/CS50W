@@ -52,7 +52,7 @@ def edit(request): # Need to fix edit from random page
 def display(request, article=None):
     """Displays a requested article"""
     if article is None:
-        article = choice(util.list_entries())
+        article = choice(util.list_entries())        
     html, title = util.page_info(article)
     return render(request, "encyclopedia/display.html", {"html":html, "title":title})
 
